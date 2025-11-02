@@ -1,0 +1,43 @@
+name: SF → MotherDuck incremental refresh (uv)
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "*/10 * * * *" # every 10 mins
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sf-md-refresh-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SF_USER: ${{ secrets.SF_USER }}
+      SF_PASS: ${{ secrets.SF_PASS }}
+      MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+      PYTHONUNBUFFERED: "1"
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      # Installs uv and Python (pin both for reproducibility), and enables uv cache
+      - name: Install uv + Python
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.9.6"        # pin uv
+          python-version: "3.12"  # or read from .python-version
+          enable-cache: true
+
+      # Create the venv from your lockfile
+      - name: Sync environment
+        run: uv sync --locked
+
+      # Run your pipeline inside the uv-managed venv
+      - name: Run incremental refresh
+        run: uv run python refresh_table_incremental_load.py
