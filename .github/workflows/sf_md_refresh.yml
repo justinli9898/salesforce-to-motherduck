@@ -1,9 +1,8 @@
 name: SF → MotherDuck incremental refresh (uv)
 
 on:
-  workflow_dispatch: {}
   schedule:
-    - cron: "*/10 * * * *" # every 10 mins
+    - cron: "*/5 * * * *" # every 5mins
 
 permissions:
   contents: read
