@@ -1,0 +1,12 @@
+# .github/workflows/heartbeat.yml
+name: heartbeat
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "event=${{ github.event_name }}"
+          date -u
