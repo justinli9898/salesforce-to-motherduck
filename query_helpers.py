@@ -12,7 +12,8 @@ from simple_salesforce import SalesforceLogin, Salesforce
 def salesforce_auth():
     sf_user = os.getenv("SF_USER")
     sf_pass = os.getenv("SF_PASS")
-    session_id, sf_instance = SalesforceLogin(username=sf_user, password=sf_pass)
+    sf_security_token = os.getenv("SF_SECURITY_TOKEN")
+    session_id, sf_instance = SalesforceLogin(username=sf_user, password=sf_pass, security_token=sf_security_token)
     sf = Salesforce(session_id=session_id, instance=sf_instance)
     return sf
 

@@ -19,6 +19,7 @@ jobs:
     env:
       SF_USER: ${{ secrets.SF_USER }}
       SF_PASS: ${{ secrets.SF_PASS }}
+      SF_SECURITY_TOKEN: ${{ secrets.SF_SECURITY_TOKEN }}
       MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
       PYTHONUNBUFFERED: "1"
 
