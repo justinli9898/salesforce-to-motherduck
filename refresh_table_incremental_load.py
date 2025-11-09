@@ -63,6 +63,14 @@ tables = {
     WHERE account.Parent_account_consolidated__c <> 'TOP GLOBAL - MARKET NEWS (INTERNAL)'
     AND account.recordtype.name <> 'Vendor'
     AND SystemModstamp >= {lower_bound}
+    """,
+
+    "opportunitycontactrole":
+    """
+    SELECT Id,SystemModstamp,IsDeleted,LastModifiedById,ContactId,CreatedById,CreatedDate,Ex_Trialist_Rating__c,IsPrimary,OpportunityId,Role
+    FROM opportunitycontactrole
+    WHERE Opportunity.Account.Parent_account_consolidated__c <> 'TOP GLOBAL - MARKET NEWS (INTERNAL)'
+    AND Opportunity.account.recordtype.name <> 'Vendor'
     """
 }
 
