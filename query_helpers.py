@@ -238,7 +238,7 @@ def soql_to_ddl(sf, soql, table_name=None, add_ingested_at=True, quote_identifie
     type_map = {
         "id": "VARCHAR(18)",
         "reference": "VARCHAR(18)",
-        "junctionidlist": "LIST<VARCHAR(18)>",
+        "junctionidlist": "VARCHAR",
         "string": "VARCHAR",
         "textarea": "VARCHAR",
         "email": "VARCHAR",
@@ -247,7 +247,7 @@ def soql_to_ddl(sf, soql, table_name=None, add_ingested_at=True, quote_identifie
         "encryptedstring": "VARCHAR",
         "picklist": "VARCHAR",
         "combobox": "VARCHAR",
-        "multipicklist": "LIST<VARCHAR>",
+        "multipicklist": "VARCHAR",
         "boolean": "BOOLEAN",
         "int": "INTEGER",
         "long": "BIGINT",
