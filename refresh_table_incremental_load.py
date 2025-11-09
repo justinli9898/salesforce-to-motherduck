@@ -39,6 +39,7 @@ tables = {
     WHERE SystemModstamp >= {lower_bound}
     ORDER BY SystemModstamp DESC
     """,
+
     "userrole":
     """
     SELECT Id,SystemModstamp,LastModifiedById,Name,ParentRoleId
@@ -46,6 +47,7 @@ tables = {
     WHERE SystemModstamp >= {lower_bound}
     ORDER BY SystemModstamp DESC
     """,
+
     "product2":
     """
     SELECT Id,SystemModstamp,LastModifiedById,Activate_by_Default__c,Billable__c,Bloomberg_Sub_Channel__c,CreatedById,CreatedDate,CurrencyIsoCode,Description,Distribution_Channel__c,Family,IsActive,IsArchived,IsDeleted,LastModifiedDate,Main_Package__c,Name,Name_for_Rollups__c,ParentProduct__c,ProductCode,Revenue_Stream__c,Select_By_Default_From_Parent__c,Types__c,Website_Offering__c
