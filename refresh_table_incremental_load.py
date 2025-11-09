@@ -82,6 +82,14 @@ tables = {
     from contract
     where SystemModstamp >= {lower_bound}
     order by SystemModstamp desc 
+    """,
+
+    "contract_account_junction__c":
+    """
+    select Id,SystemModstamp,IsDeleted,LastModifiedById,Account__c,Contractual_Relationship__c,Contract__c,CreatedById,CreatedDate,Name
+    from contract_account_junction__c
+    where SystemModstamp >= {lower_bound}
+    order by SystemModstamp desc     
     """
 }
 
