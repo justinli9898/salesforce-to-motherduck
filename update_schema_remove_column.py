@@ -6,9 +6,7 @@ from dotenv import load_dotenv
 from query_helpers import motherduck_auth
 
 table = "Account"
-
-#insert column name here
-column = ""
+column = "Pure_Commods_Account__c"
 
 load_dotenv()
 con = motherduck_auth()
