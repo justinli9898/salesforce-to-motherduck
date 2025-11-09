@@ -81,7 +81,7 @@ tables = {
     select Id, SystemModstamp, IsDeleted, LastModifiedById, AccountId, Active_Account_Lookup__c, Anniversary_Date__c, Auto_Renew__c, Base_MSA__c, Cancellation_Terms_days__c, ContractNumber, ContractTerm, Contractual_MRR_cc__c, Contract_End_Date__c, Contract_Status__c, Contract_Type__c, CreatedById, CreatedDate, Current_Contract_Renewed__c, Description, EndDate, Exit_2__c, Exit__c, Expiry_Date__c, Original_MSA_Commencement_Date__c, Price_Increase_Notice_Period__c, RecordTypeId, Roll_Date__c, SpecialTerms, StartDate, Subcontract_Type__c
     from contract
     where SystemModstamp >= {lower_bound}
-    order by SystemModstamp desc 
+    order by SystemModstamp desc
     """,
 
     "contract_account_junction__c":
@@ -89,7 +89,7 @@ tables = {
     select Id,SystemModstamp,IsDeleted,LastModifiedById,Account__c,Contractual_Relationship__c,Contract__c,CreatedById,CreatedDate,Name
     from contract_account_junction__c
     where SystemModstamp >= {lower_bound}
-    order by SystemModstamp desc     
+    order by SystemModstamp desc
     """,
 
     "case":
@@ -98,6 +98,26 @@ tables = {
     from case
     where account.parent_account_consolidated__c <> 'TOP GLOBAL - MARKET NEWS (INTERNAL)'
     and account.recordtype.name <> 'Vendor'
+    and SystemModstamp >= {lower_bound}
+    order by SystemModstamp desc
+    """,
+
+    "subscription__c":
+    """
+    select Account__c,Active__c,Amount__c,CDC_Update_Info__c,Comment__c,Contact__c,Content__c,CreatedById,CreatedDate,Description__c,Distribution_Channel__c,Edge_Region__c,Email__c,End_Date__c,ICE_Status__c,Id,IsDeleted,Is_Interaction__c,LastModifiedById,LastModifiedDate,Name,Name_for_Rollups__c,Opportunity__c,Product2_Name__c,Product2__c,Restricted_ICE_Sub_Owner__c,Room_Sub_Type_Commodities_only__c,Room_Type__c,Start_Date__c,Status__c,SystemModstamp,Transport_Dimension__c,Turn_Off_Subscription_Access__c,Type__c,User_still_not_accepted_ICE_invite__c,UUID_new__c,UUID__c
+    from subscription__c
+    where account__r.parent_account_consolidated__c <> 'TOP GLOBAL - MARKET NEWS (INTERNAL)'
+    and account__r.recordtype.name <> 'Vendor'
+    and SystemModstamp >= {lower_bound}
+    order by SystemModstamp desc
+    """,
+
+    "free_of_cost_items__c":
+    """
+    select Account__c,Active__c,Comment__c,Contact__c,Content__c,CreatedById,CreatedDate,Distribution_Channel__c,Edge_Region__c,Email_Rendering__c,Email__c,End_Date__c,Id,IsDeleted,LastModifiedById,LastModifiedDate,Name,Opportunity__c,OwnerId,Product2__c,Product_Name_text__c,Rebelmouse_User_ID__c,Start_Date__c,SystemModstamp,Turn_Off_Email_Access__c
+    from Free_of_Cost_Items__c
+    where account__r.parent_account_consolidated__c <> 'TOP GLOBAL - MARKET NEWS (INTERNAL)'
+    and account__r.recordtype.name <> 'Vendor'
     and SystemModstamp >= {lower_bound}
     order by SystemModstamp desc
     """
