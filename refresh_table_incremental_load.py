@@ -4,7 +4,7 @@ from query_helpers import salesforce_auth, motherduck_auth, incremental_refresh_
 tables = {
     "content__c":
     """
-    select Id, SystemModstamp, IsDeleted, LastModifiedById, Account__c, Contact__c, Opportunity__c, Product__c, Case__c, Recurring_Billing_Line__c, CreatedDate, CreatedById, Start_Date__c, End_Date__c, Type__c, Active__c, CurrencyIsoCode, Amount__c, Amount_CC__c, Original_Converted_Amount_CC__c, Converted_from_a_Trial__c, Lead_Source_New__c, Created_from_weblead__c, Created_from_weblead__c
+    select Id, SystemModstamp, IsDeleted, LastModifiedById, Account__c, Contact__c, Opportunity__c, Product__c, Case__c, Recurring_Billing_Line__c, CreatedDate, CreatedById, Start_Date__c, End_Date__c, Type__c, Active__c, CurrencyIsoCode, Amount__c, Amount_CC__c, Original_Converted_Amount_CC__c, Converted_from_a_Trial__c, Lead_Source_New__c, Created_from_weblead__c
     from content__c
     where Account__r.Parent_account_consolidated__c <> 'TOP GLOBAL - MARKET NEWS (INTERNAL)'
     and Account__r.RecordType.Name <> 'Vendor'
