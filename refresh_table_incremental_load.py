@@ -24,7 +24,7 @@ tables = {
 
     "contact":
     """
-    select Id, SystemModstamp, IsDeleted, LastModifiedById, AccountId, Auth_0_Id__c, CreatedDate, CreatedById, Name, Email, Job_Title__c, Primary_Product_Target__c, Subscription_Status__c, HasOptedOutOfEmail, DO_NOT_CONTACT__c
+    select Id, SystemModstamp, IsDeleted, LastModifiedById, AccountId, Auth_0_Id__c, CreatedDate, CreatedById, Name, Email, Job_Title__c, Primary_Product_Target__c, HasOptedOutOfEmail, DO_NOT_CONTACT__c
     from contact
     where account.Parent_account_consolidated__c <> 'TOP GLOBAL - MARKET NEWS (INTERNAL)'
     and account.recordtype.name <> 'Vendor'
